@@ -26,7 +26,7 @@ public class CreateCourierTest {
 
     @Before
     public void generateTestData() {
-        login = "testCourier_" + System.currentTimeMillis();
+        login = "testCourier_";
         password = "password123";
         firstName = "John";
     }
@@ -35,7 +35,7 @@ public class CreateCourierTest {
     @Test
     @Step("Success Creating Courier on route /api/v1/courier ")
     public void testCreateCourier() {
-        createCourier(login, password, firstName)
+        createCourier(login + System.currentTimeMillis() , password, firstName)
                 .then()
                 .statusCode(201)
                 .body("ok", equalTo(true));
